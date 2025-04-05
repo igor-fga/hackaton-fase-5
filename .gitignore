@@ -1,16 +1,3 @@
-# Compiled class files
-*.class
-
-# Log files
-*.log
-logs/
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
 # Package Files
 *.jar
 *.war
@@ -20,9 +7,7 @@ logs/
 *.tar.gz
 *.rar
 
-# Virtual machine crash logs
-hs_err_pid*
-replay_pid*
+
 
 # Maven
 target/
@@ -36,20 +21,6 @@ buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
 
-# Gradle
-.gradle/
-build/
-!gradle/wrapper/gradle-wrapper.jar
-
-# Spring Boot
-.spring-boot-devtools
-
-# Eclipse
-.classpath
-.project
-.settings/
-.factorypath
-.sts4-cache/
 
 # IntelliJ IDEA
 .idea/
@@ -59,12 +30,6 @@ build/
 out/
 .idea_modules/
 
-# NetBeans
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
 
 # VS Code
 .vscode/
@@ -79,27 +44,5 @@ out/
 ehthumbs.db
 Thumbs.db
 
-# Application specific files
-application-local.properties
-application-local.yml
-application-dev.properties
-application-dev.yml
-
 # Environment variables file
 .env
-
-# JaCoCo coverage reports
-/coverage/
-*.exec
-
-# Sonar
-.sonar/
-.scannerwork/
-
-# Database files
-*.db
-*.sqlite
-*.h2.db
-
-# Build configuration files
-.factorypath
