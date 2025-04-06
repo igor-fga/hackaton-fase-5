@@ -4,16 +4,17 @@ import com.prontuario.medicamentos.domain.model.Medicamento;
 import com.prontuario.medicamentos.domain.repository.MedicamentoRepository;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class CadastrarMedicamentoService {
 
-    private final MedicamentoRepository medicamentoRepository;
+    private final MedicamentoRepository repository;
 
-    public CadastrarMedicamentoService(MedicamentoRepository medicamentoRepository) {
-        this.medicamentoRepository = medicamentoRepository;
+    public CadastrarMedicamentoService(MedicamentoRepository repository) {
+        this.repository = repository;
     }
 
     public Medicamento cadastrar(Medicamento medicamento) {
-        return medicamentoRepository.salvar(medicamento);
+        return repository.salvar(medicamento);
     }
 }

@@ -10,13 +10,16 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MedicamentoRepositoryImpl implements MedicamentoRepository {
 
-    @Autowired
-    private SpringDataMedicamentoRepository springDataRepo;
+    private final SpringDataMedicamentoRepository springDataRepo;
+
+    public MedicamentoRepositoryImpl(SpringDataMedicamentoRepository springDataRepo) {
+        this.springDataRepo = springDataRepo;
+    }
 
     @Override
     public Medicamento salvar(Medicamento medicamento) {
         MedicamentoEntity entity = MedicamentoMapper.toEntity(medicamento);
-        MedicamentoEntity saved = springDataRepo.save(entity);
-        return MedicamentoMapper.toDomain(saved);
+        MedicamentoEntity savedEntity = springDataRepo.save(entity);
+        return MedicamentoMapper.toDomain(savedEntity);
     }
 }
