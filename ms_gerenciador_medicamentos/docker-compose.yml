@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  mysql-medicamentos:
+    image: mysql:8.0
+    container_name: mysql-medicamentos
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: medicamentos-service
+      MYSQL_USER: developer
+      MYSQL_PASSWORD: 123456789
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - medicamentos-network
+
+  spring-medicamentos:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spring-medicamentos
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_APPLICATION_NAME: medicamentos-service
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-medicamentos:3306/medicamentos-service
+      SPRING_DATASOURCE_USERNAME: developer
+      SPRING_DATASOURCE_PASSWORD: 123456789
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+    depends_on:
+      - mysql-medicamentos
+    networks:
+      - medicamentos-network
+
+volumes:
+  mysql_data:
+
+networks:
+  medicamentos-network:
+    driver: bridge
