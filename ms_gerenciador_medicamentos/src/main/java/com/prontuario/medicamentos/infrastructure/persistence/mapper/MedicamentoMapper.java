@@ -2,9 +2,12 @@ package com.prontuario.medicamentos.infrastructure.persistence.mapper;
 
 import com.prontuario.medicamentos.domain.model.Medicamento;
 import com.prontuario.medicamentos.infrastructure.persistence.entity.MedicamentoEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MedicamentoMapper {
-    public static MedicamentoEntity toEntity(Medicamento domain) {
+
+    public MedicamentoEntity toEntity(Medicamento domain) {
         MedicamentoEntity entity = new MedicamentoEntity();
         entity.setNome(domain.getNome());
         entity.setPrincipioAtivo(domain.getPrincipioAtivo());
@@ -13,7 +16,7 @@ public class MedicamentoMapper {
         return entity;
     }
 
-    public static Medicamento toDomain(MedicamentoEntity entity) {
+    public Medicamento toDomain(MedicamentoEntity entity) {
         Medicamento domain = new Medicamento(
                 entity.getNome(),
                 entity.getPrincipioAtivo(),
