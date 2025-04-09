@@ -1,4 +1,4 @@
-package com.prontuario.medicamentos.domain.model;
+package com.prontuario.medicamentos.domain.entity;
 
 public class Medicamento {
     private Long id;
