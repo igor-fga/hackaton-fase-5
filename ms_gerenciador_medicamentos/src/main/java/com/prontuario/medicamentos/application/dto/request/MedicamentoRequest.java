@@ -1,23 +1,18 @@
-package com.prontuario.medicamentos.infrastructure.persistence.entity;
+package com.prontuario.medicamentos.application.dto.request;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
-@Entity
-@Table(name = "medicamentos")
-public class MedicamentoEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class MedicamentoRequest {
+    @NotBlank(message = "Nome é obrigatório")
     private String nome;
+
+    @NotBlank(message = "Princípio ativo é obrigatório")
     private String principioAtivo;
+
     private String fabricante;
     private String dosagem;
 
     // Getters e Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
     public String getPrincipioAtivo() { return principioAtivo; }
