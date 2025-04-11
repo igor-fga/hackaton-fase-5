@@ -47,11 +47,18 @@ public class MedicamentoController {
         return ResponseEntity.ok(medicamentoMapper.toDTO(atualizado));
     }
 
+    @GetMapping("/busca")
+    public ResponseEntity<List<MedicamentoDTO>> buscarPorNome(@RequestParam String nome) {
+        var medicamentos = medicamentoUseCase.buscarPorNome(nome);
+        return ResponseEntity.ok(medicamentoMapper.toDTOList(medicamentos));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         medicamentoUseCase.deletar(id);
         return ResponseEntity.noContent().build();
     }
+
 
 
 }

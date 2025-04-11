@@ -8,5 +8,6 @@ public interface MedicamentoRepository {
     Medicamento salvar(Medicamento medicamento);
     List<Medicamento> listarTodos();
     Optional<Medicamento> buscarPorId(Long id);
+    List<Medicamento> buscarPorNome(String nome);
     void deletarPorId(Long id);
 }
