@@ -43,7 +43,14 @@ public class MedicamentoRepositoryImpl implements MedicamentoRepository {
         return springDataRepo.findById(id)
                 .map(mapper::toDTO);
     }
-
+    @Override
+    public List<Medicamento> buscarPorNome(String nome) {
+        return springDataRepo.findByNomeContainingIgnoreCase(nome)
+                .stream()
+                .map(mapper::toDTO)
+                .toList();
+    }
+    
     @Override
     public void deletarPorId(Long id) {
         springDataRepo.deleteById(id);
