@@ -33,7 +33,12 @@ Crie uma senha específica para um app, digitando o nome para ele.
 Ao salvar será gerado o token para incluir em sua variável de ambiente, application.properties ou .env. 
 ```
 
-## 📌 4. Endpoint para gerar Excel ao Admin via Navegador Local (extensão .xlsx)
+## 🧩 4. Endpoint para gerar Excel ao Admin via Navegador Local (extensão .xlsx)
 ```bash
 http://localhost:8082/api/admin/exportar-pacientes
+```
+
+## 🔗 5. Acessar Swagger
+```bash
+http://localhost:8082/documentacao
 ```
