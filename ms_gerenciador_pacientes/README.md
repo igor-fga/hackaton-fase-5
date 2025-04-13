@@ -14,14 +14,16 @@
 
 ```
 
-##  2. Acessar o Spring Boot Actuator
+## 🔧 2. Acessar o Spring Boot Actuator
 
 Endpoints para monitoramento e gestão da aplicação:
 
 ### URL Base:
+```bash
 http://localhost:8082/actuator/health
 http://localhost:8082/actuator/info
 http://localhost:8082/actuator/metrics
+```
 
 ## ✉️ 3. Para testar envio de e-mail usando o Gmail, seguir os passos abaixo:
 
@@ -38,7 +40,7 @@ Ao salvar será gerado o token para incluir em sua variável de ambiente, applic
 http://localhost:8082/api/admin/exportar-pacientes
 ```
 
-## 🔗 5. Acessar Swagger
+## 📄 5. Acessar Swagger
 ```bash
 http://localhost:8082/documentacao
 ```
