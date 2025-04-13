@@ -12,6 +12,8 @@
 ```bash
 ./mvnw spring-boot:run
 
+```
+
 ## 📊 2. Acessar o Spring Boot Actuator
 
 Endpoints para monitoramento e gestão da aplicação:
