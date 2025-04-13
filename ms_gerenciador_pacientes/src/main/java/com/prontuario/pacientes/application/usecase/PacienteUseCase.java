@@ -6,6 +6,8 @@ import com.prontuario.pacientes.domain.exceptions.ControllerNotFoundException;
 import com.prontuario.pacientes.domain.exceptions.CpfJaExisteException;
 
 import com.prontuario.pacientes.domain.repository.PacienteRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -77,5 +79,9 @@ public class PacienteUseCase {
 
     public void excluirPaciente(Long id) {
         pacienteRepository.excluir(id);
+    }
+
+    public Page<Paciente> buscarPorNome(String nomeCompleto, Pageable pageable) {
+        return pacienteRepository.findByNomeCompletoContainingIgnoreCase(nomeCompleto, pageable);
     }
 }
