@@ -14,7 +14,7 @@
 
 ```
 
-## 📊 2. Acessar o Spring Boot Actuator
+## 📊  2. Acessar o Spring Boot Actuator
 
 Endpoints para monitoramento e gestão da aplicação:
 
