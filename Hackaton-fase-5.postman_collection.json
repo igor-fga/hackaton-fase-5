@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "e02f5b8d-151c-46d2-be16-fc374d54b32e",
+		"name": "Hackaton-fase-5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "23865706",
+		"_collection_link": "https://restless-shadow-662477.postman.co/workspace/66691f34-5cf3-45e0-8f6a-dc85b0ce60e9/collection/23865706-e02f5b8d-151c-46d2-be16-fc374d54b32e?action=share&source=collection_link&creator=23865706"
+	},
+	"item": [
+		{
+			"name": "msGerenciadorPacientes",
+			"item": [
+				{
+					"name": "getPacientesAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8082/api/pacientes"
+					},
+					"response": []
+				},
+				{
+					"name": "getPacienteId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8082/api/pacientes/6"
+					},
+					"response": []
+				},
+				{
+					"name": "getPacienteCpf",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8082/api/pacientes/6"
+					},
+					"response": []
+				},
+				{
+					"name": "postCadastrarPaciente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nomeCompleto\": \"João da Silva\",\r\n  \"dataNascimento\": \"1985-08-15\",\r\n  \"genero\": \"MASCULINO\",\r\n  \"cpf\": \"32529981817\",\r\n  \"numeroProntuario\": \"1234567\",\r\n  \"email\": \"joao.silva@email.com\",\r\n  \"endereco\": \"Rua das Flores, 123 - São Paulo, SP\",\r\n  \"contato\": \"(11) 98765-4321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/api/pacientes"
+					},
+					"response": []
+				},
+				{
+					"name": "deletePacienteId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8082/api/pacientes/26"
+					},
+					"response": []
+				},
+				{
+					"name": "AlteracaoCadastroPaciente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"nomeCompleto\": \"Vagner Anselmo Braz\",\r\n        \"dataNascimento\": \"29/02/1980\",\r\n        \"genero\": \"MASCULINO\",\r\n        \"cpf\": \"29708504866\",\r\n        \"numeroProntuario\": \"1234567\",\r\n        \"email\": \"anselmobraz@hotmail.com\",\r\n        \"endereco\": \"Rua Floriza Klein Vasconscelos, nro 38, Bairro: Vila Nova Osasco, Osasco, SP\",\r\n        \"contato\": \"(11)96739 2706\"\r\n    } ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/api/pacientes/24"
+					},
+					"response": []
+				},
+				{
+					"name": "GetPacienteNome_Ordenado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/pacientes/nome_ordenado?nome=Artur&page=0&size=5&sort=nomeCompleto,asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"pacientes",
+								"nome_ordenado"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "Artur"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								},
+								{
+									"key": "sort",
+									"value": "nomeCompleto,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
