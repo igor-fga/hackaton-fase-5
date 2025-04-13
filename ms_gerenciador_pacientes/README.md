@@ -1,6 +1,6 @@
 # 🚀 Guia para o MS_Gerenciador_Pacientes
 
-## ✅ 1. Rodar o Projeto
+## ✅ Rodar o Projeto
 
 ### Pré-requisitos
 - Java 17 ou superior
@@ -14,7 +14,7 @@
 
 ```
 
-## 🔧 2. Acessar o Spring Boot Actuator
+## 🔧 Acessar o Spring Boot Actuator
 
 Endpoints para monitoramento e gestão da aplicação:
 
@@ -25,7 +25,7 @@ http://localhost:8082/actuator/info
 http://localhost:8082/actuator/metrics
 ```
 
-## ✉️ 3. Para testar envio de e-mail usando o Gmail, seguir os passos abaixo:
+## ✉️ Para testar envio de e-mail usando o Gmail, seguir os passos abaixo:
 
 #### Gmail: 
 ```bash
@@ -35,12 +35,12 @@ Crie uma senha específica para um app, digitando o nome para ele.
 Ao salvar será gerado o token para incluir em sua variável de ambiente, application.properties ou .env. 
 ```
 
-## 🧩 4. Endpoint para gerar Excel ao Admin via Navegador Local (extensão .xlsx)
+## 🧩 Endpoint para gerar Excel ao Admin via Navegador Local (extensão .xlsx)
 ```bash
 http://localhost:8082/api/admin/exportar-pacientes
 ```
 
-## 📄 5. Acessar Swagger
+## 📄 Acessar Swagger
 ```bash
 http://localhost:8082/documentacao
 ```
