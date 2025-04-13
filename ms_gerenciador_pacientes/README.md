@@ -44,3 +44,11 @@ http://localhost:8082/api/admin/exportar-pacientes
 ```bash
 http://localhost:8082/documentacao
 ```
+
+## 📈 Relatório JaCoCo
+
+#### O JaCoCo é uma ferramenta para medir a cobertura de testes no código.
+```bash
+mvn test jacoco:report
+target/site/jacoco/index.html
+```
