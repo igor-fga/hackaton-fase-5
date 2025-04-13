@@ -41,4 +41,5 @@ public class PacienteMapper {
     public List<PacienteDTO> toDTOList(List<Paciente> pacientes) {
         return pacientes.stream().map(this::toDTO).collect(Collectors.toList());
     }
+
 }

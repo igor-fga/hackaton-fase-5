@@ -17,9 +17,10 @@ public class SwaggerConfig {
                         .version("1.0")
                         .description("Documentação da API para o projeto Hackaton Fase 5")
                         .contact(new Contact()
-                                .name("Seu Nome")
-                                .email("seuemail@dominio.com")
+                                .name("Equipe Hackaton")
+                                .email("hackaton@fiap.com.br")
                                 .url("https://www.fiap.com.br")
-                        ));
+                        )
+                );
     }
 }
