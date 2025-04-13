@@ -1,23 +1,46 @@
 package com.prontuario.pacientes.application.dto;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
-@Data
+
+@Getter
+@Setter
+@EqualsAndHashCode
+@AllArgsConstructor
 @NoArgsConstructor
 public class PacienteDTO{
 
-    private UUID id;
+    private Long id;
+
+    @NotBlank
     private String nomeCompleto;
+
+    @NotBlank
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
+
     private String genero;
+
+    @CPF
     private String cpf;
+
+    @NotBlank
     private String numeroProntuario;
+
+    @Email
     private String email;
+
+    @NotBlank
     private String endereco;
+
+    @NotBlank
     private String contato;
 }
 

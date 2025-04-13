@@ -3,6 +3,7 @@ package com.prontuario.pacientes.adapters.input.controlller;
 import com.prontuario.pacientes.adapters.mapper.PacienteMapper;
 import com.prontuario.pacientes.application.dto.PacienteDTO;
 import com.prontuario.pacientes.application.usecase.PacienteUseCase;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,14 +30,14 @@ public class PacienteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PacienteDTO> alterarPaciente(@PathVariable UUID id, @RequestBody PacienteDTO pacienteDTO) {
+    public ResponseEntity<PacienteDTO> alterarPaciente(@PathVariable Long id, @RequestBody PacienteDTO pacienteDTO) {
         var paciente = pacienteMapper.toEntity(pacienteDTO);
         var pacienteCriado = pacienteUseCase.alterarPaciente(id, paciente);
         return ResponseEntity.ok(pacienteMapper.toDTO(pacienteCriado));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PacienteDTO> buscarPaciente(@PathVariable UUID id) {
+    public ResponseEntity<PacienteDTO> buscarPaciente(@PathVariable Long id) {
         var paciente = pacienteUseCase.buscarPaciente(id);
         return ResponseEntity.ok(pacienteMapper.toDTO(paciente));
     }
@@ -48,8 +49,17 @@ public class PacienteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluirPaciente(@PathVariable UUID id) {
+    public ResponseEntity<Void> excluirPaciente(@PathVariable Long id) {
         pacienteUseCase.excluirPaciente(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/cpf/{cpf}")
+    public ResponseEntity<PacienteDTO> buscarPacientePorCpf(@PathVariable String cpf) {
+        var pacientes = pacienteUseCase.buscarPacientePorCpf(cpf);
+        if (pacientes == null) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(pacienteMapper.toDTO(pacientes));
     }
 }

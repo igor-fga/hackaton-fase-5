@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Repository
 public class PacienteRepositoryImpl implements PacienteRepository {
@@ -24,7 +23,7 @@ public class PacienteRepositoryImpl implements PacienteRepository {
     }
 
     @Override
-    public Optional<Paciente> buscarPorId(UUID id) {
+    public Optional<Paciente> buscarPorId(Long id) {
         return repository.findById(id);
     }
 
@@ -34,7 +33,20 @@ public class PacienteRepositoryImpl implements PacienteRepository {
     }
 
     @Override
-    public void excluir(UUID id) {
+    public void excluir(Long id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public boolean existsByCpf(String cpf) {
+        return repository.existsByCpf(cpf);
+    }
+
+    @Override
+    public Optional<Paciente> findByCpf(String cpf) {
+        return repository.findByCpf(cpf);
+    }
+
 }
+
+
