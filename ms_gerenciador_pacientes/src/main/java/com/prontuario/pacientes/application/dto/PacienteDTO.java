@@ -3,12 +3,11 @@ package com.prontuario.pacientes.application.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
-import java.util.UUID;
-
 
 @Getter
 @Setter
@@ -22,7 +21,7 @@ public class PacienteDTO{
     @NotBlank
     private String nomeCompleto;
 
-    @NotBlank
+    @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
 

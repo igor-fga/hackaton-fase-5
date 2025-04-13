@@ -3,6 +3,8 @@ package com.prontuario.pacientes.adapters.output.repository;
 import com.prontuario.pacientes.domain.entity.Paciente;
 import com.prontuario.pacientes.domain.repository.PacienteRepository;
 import com.prontuario.pacientes.infrastructure.config.database.repository.jpa.PacienteJpaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -45,6 +47,11 @@ public class PacienteRepositoryImpl implements PacienteRepository {
     @Override
     public Optional<Paciente> findByCpf(String cpf) {
         return repository.findByCpf(cpf);
+    }
+
+    @Override
+    public Page<Paciente> findByNomeCompletoContainingIgnoreCase(String nomeCompleto, Pageable pageable) {
+        return repository.findByNomeCompletoContainingIgnoreCase(nomeCompleto,pageable);
     }
 
 }
