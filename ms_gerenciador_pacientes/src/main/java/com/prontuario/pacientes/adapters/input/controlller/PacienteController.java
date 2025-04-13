@@ -3,13 +3,14 @@ package com.prontuario.pacientes.adapters.input.controlller;
 import com.prontuario.pacientes.adapters.mapper.PacienteMapper;
 import com.prontuario.pacientes.application.dto.PacienteDTO;
 import com.prontuario.pacientes.application.usecase.PacienteUseCase;
-import jakarta.validation.Valid;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
+@Tag(name = "Pacientes", description = "Operações relacionadas aos pacientes")
 @RestController
 @RequestMapping("/api/pacientes")
 public class PacienteController {
@@ -42,6 +43,7 @@ public class PacienteController {
         return ResponseEntity.ok(pacienteMapper.toDTO(paciente));
     }
 
+    @Operation(summary = "Buscar todos os pacientes", description = "Este endpoint retorna todos os pacientes registrados.")
     @GetMapping
     public ResponseEntity<List<PacienteDTO>> listaPacientes() {
         var pacientes = pacienteUseCase.listaPacientes();

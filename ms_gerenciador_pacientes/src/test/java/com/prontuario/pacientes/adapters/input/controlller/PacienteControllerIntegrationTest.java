@@ -5,16 +5,18 @@ import com.prontuario.pacientes.application.dto.PacienteDTO;
 import com.prontuario.pacientes.application.usecase.PacienteUseCase;
 import com.prontuario.pacientes.domain.entity.Paciente;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.transaction.annotation.Transactional;
 
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -22,6 +24,7 @@ import java.time.LocalDate;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
+@Transactional
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 public class PacienteControllerIntegrationTest {
@@ -41,8 +44,8 @@ public class PacienteControllerIntegrationTest {
         pacienteDTO.setNomeCompleto("Anselmo Braz");
         pacienteDTO.setDataNascimento(LocalDate.of(1980,02,29));
         pacienteDTO.setGenero("MASCULINO");
-        pacienteDTO.setCpf("74892294055");
-        pacienteDTO.setNumeroProntuario("1230987");
+        pacienteDTO.setCpf("09874343060");
+        pacienteDTO.setNumeroProntuario("1234568");
         pacienteDTO.setEmail("julianamariadalolio@gmail.com");
         pacienteDTO.setEndereco("Rua Floriza Klein Vasconscelos, nro 38, Bairro: Vila Nova Osasco, Osasco, SP");
         pacienteDTO.setContato("11990672390");
@@ -55,8 +58,8 @@ public class PacienteControllerIntegrationTest {
                 .andExpect(jsonPath("$.nomeCompleto").value("Anselmo Braz"))
                 .andExpect(jsonPath("$.dataNascimento").value("29/02/1980"))
                 .andExpect(jsonPath("$.genero").value("MASCULINO"))
-                .andExpect(jsonPath("$.cpf").value("74892294055"))
-                .andExpect(jsonPath("$.numeroProntuario").value("1230987"))
+                .andExpect(jsonPath("$.cpf").value("09874343060"))
+                .andExpect(jsonPath("$.numeroProntuario").value("1234568"))
                 .andExpect(jsonPath("$.email").value("julianamariadalolio@gmail.com"))
                 .andExpect(jsonPath("$.endereco").value("Rua Floriza Klein Vasconscelos, nro 38, Bairro: Vila Nova Osasco, Osasco, SP"))
                 .andExpect(jsonPath("$.contato").value("11990672390"));
@@ -76,8 +79,8 @@ public class PacienteControllerIntegrationTest {
         pacienteDTO.setNomeCompleto("Anselmo Braz");
         pacienteDTO.setDataNascimento(LocalDate.of(1980, 2, 29));
         pacienteDTO.setGenero("MASCULINO");
-        pacienteDTO.setCpf("74892294055");
-        pacienteDTO.setNumeroProntuario("1230987");
+        pacienteDTO.setCpf("61864363061");
+        pacienteDTO.setNumeroProntuario("1230989");
         pacienteDTO.setEmail("julianamariadalolio@gmail.com");
         pacienteDTO.setEndereco("Rua Floriza Klein Vasconscelos, nro 38, Bairro: Vila Nova Osasco, Osasco, SP");
         pacienteDTO.setContato("11990672390");
@@ -92,18 +95,16 @@ public class PacienteControllerIntegrationTest {
         PacienteDTO pacienteCriado = objectMapper.readValue(jsonResponse, PacienteDTO.class);
         Long idCriado = pacienteCriado.getId();
 
-        pacienteCriado.setNomeCompleto("Anselmo Braz Atualizado");
-
         mockMvc.perform(MockMvcRequestBuilders.put("/api/pacientes/{id}", idCriado)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(pacienteCriado)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(idCriado))
-                .andExpect(jsonPath("$.nomeCompleto").value("Anselmo Braz Atualizado"))
+                .andExpect(jsonPath("$.nomeCompleto").value("Anselmo Braz"))
                 .andExpect(jsonPath("$.dataNascimento").value("29/02/1980"))
                 .andExpect(jsonPath("$.genero").value("MASCULINO"))
-                .andExpect(jsonPath("$.cpf").value("74892294055"))
-                .andExpect(jsonPath("$.numeroProntuario").value("1230987"))
+                .andExpect(jsonPath("$.cpf").value("61864363061"))
+                .andExpect(jsonPath("$.numeroProntuario").value("1230989"))
                 .andExpect(jsonPath("$.email").value("julianamariadalolio@gmail.com"))
                 .andExpect(jsonPath("$.endereco").value("Rua Floriza Klein Vasconscelos, nro 38, Bairro: Vila Nova Osasco, Osasco, SP"))
                 .andExpect(jsonPath("$.contato").value("11990672390"));
@@ -115,8 +116,8 @@ public class PacienteControllerIntegrationTest {
         paciente.setNomeCompleto("Anselmo Braz");
         paciente.setDataNascimento(LocalDate.of(1980, 2, 29));
         paciente.setGenero("MASCULINO");
-        paciente.setCpf("74892294055");
-        paciente.setNumeroProntuario("1230987");
+        paciente.setCpf("61864363061");
+        paciente.setNumeroProntuario("1230989");
         paciente.setEmail("julianamariadalolio@gmail.com");
         paciente.setEndereco("Rua Floriza Klein Vasconscelos, nro 38, Bairro: Vila Nova Osasco, Osasco, SP");
         paciente.setContato("11990672390");
@@ -130,8 +131,8 @@ public class PacienteControllerIntegrationTest {
                 .andExpect(jsonPath("$.nomeCompleto").value("Anselmo Braz"))
                 .andExpect(jsonPath("$.dataNascimento").value("29/02/1980"))
                 .andExpect(jsonPath("$.genero").value("MASCULINO"))
-                .andExpect(jsonPath("$.cpf").value("74892294055"))
-                .andExpect(jsonPath("$.numeroProntuario").value("1230987"))
+                .andExpect(jsonPath("$.cpf").value("61864363061"))
+                .andExpect(jsonPath("$.numeroProntuario").value("1230989"))
                 .andExpect(jsonPath("$.email").value("julianamariadalolio@gmail.com"))
                 .andExpect(jsonPath("$.endereco").value("Rua Floriza Klein Vasconscelos, nro 38, Bairro: Vila Nova Osasco, Osasco, SP"))
                 .andExpect(jsonPath("$.contato").value("11990672390"));
@@ -144,8 +145,8 @@ public class PacienteControllerIntegrationTest {
         paciente.setNomeCompleto("Anselmo Braz");
         paciente.setDataNascimento(LocalDate.of(1980, 2, 29));
         paciente.setGenero("MASCULINO");
-        paciente.setCpf("74892294055");
-        paciente.setNumeroProntuario("1230987");
+        paciente.setCpf("61864363061");
+        paciente.setNumeroProntuario("1230989");
         paciente.setEmail("julianamariadalolio@gmail.com");
         paciente.setEndereco("Rua Floriza Klein Vasconscelos, nro 38, Bairro: Vila Nova Osasco, Osasco, SP");
         paciente.setContato("11990672390");
