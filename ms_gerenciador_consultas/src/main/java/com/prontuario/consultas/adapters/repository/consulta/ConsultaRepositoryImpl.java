@@ -1,4 +1,4 @@
-package com.prontuario.consultas.adapters.repository;
+package com.prontuario.consultas.adapters.repository.consulta;
 
 import com.prontuario.consultas.domain.entity.Consulta;
 import com.prontuario.consultas.domain.repository.ConsultaRepository;
@@ -35,5 +35,15 @@ public class ConsultaRepositoryImpl implements ConsultaRepository {
     @Override
     public List<Consulta> findByPeriodo(LocalDateTime inicio, LocalDateTime fim) {
         return consultaJpaRepository.findByDataHoraBetween(inicio, fim);
+    }
+
+    @Override
+    public void delete(Long id) {
+        consultaJpaRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Consulta> findByMedicoIdAndDataHoraBetween(Long medicoId, LocalDateTime inicioDia, LocalDateTime fimDia) {
+        return consultaJpaRepository.findByMedicoIdAndDataHoraBetween(medicoId, inicioDia, fimDia);
     }
 }

@@ -11,4 +11,7 @@ public interface ConsultaRepository {
     Optional<Consulta> findById(Long id);
     List<Consulta> findByPacienteId(Long pacienteId);
     List<Consulta> findByPeriodo(LocalDateTime inicio, LocalDateTime fim);
+    void delete(Long id);
+
+    List<Consulta> findByMedicoIdAndDataHoraBetween(Long medicoId, LocalDateTime inicioDia, LocalDateTime fimDia);
 }
