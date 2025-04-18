@@ -101,7 +101,7 @@ public class ConsultaController {
         }
     }
 
-    @PostMapping("/disponibilidade")
+    @GetMapping("/disponibilidade")
     public ResponseEntity<DisponibilidadeResponse> verificarDisponibilidade(
             @Valid @RequestBody VerificarDisponibilidadeRequest request) {
         DisponibilidadeResponse response = gerenciarDisponibilidadeUseCase.verificarDisponibilidade(request);
