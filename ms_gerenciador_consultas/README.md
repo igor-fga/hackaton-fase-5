@@ -43,13 +43,59 @@ src/
                 └── usecase/              # Testes dos casos de uso
 ```
 
-Configuração do Ambiente
-Pré-requisitos:
+## Configuração do Ambiente
 
-Java 17
-MySQL
-Maven
-Configuração do Banco de Dados:
+1. Pré-requisitos:
+   - Java 17
+   - MySQL
+   - Maven
+    
+2. Configuração do Banco de Dados:
+    - Certifique-se de que o MySQL esteja em execução.
+    - Crie um banco de dados chamado prontuario.
 
-Certifique-se de que o MySQL esteja em execução.
-Crie um banco de dados chamado prontuario.
+```plaintext
+spring.datasource.url=jdbc:mysql://localhost:3306/prontuario?serverTimezone=America/Sao_Paulo&useSSL=false
+spring.datasource.username=SEU_USUARIO
+spring.datasource.password=SUA_SENHA
+```
+3. Executando o Projeto:
+   - Compile o projeto
+
+```plaintext
+mvn clean install
+```
+
+4. Acessando a API:
+   - A API estará disponível em: [localhost](http://localhost:8080/api/consultas)
+
+## Endpoints Disponíveis
+
+### Consultas
+
+  - POST /api/consultas (Agendar uma nova consulta)
+
+  - GET /api/consultas/{id} (Buscar consulta por ID)
+
+  - GET /api/consultas/paciente/{pacienteId} (Buscar consultas de um paciente)
+
+  - GET /api/consultas/periodo?inicio={inicio}&fim={fim} (Buscar consultas em um período)
+
+  - PUT /api/consultas/{id} (Atualizar uma consulta existente)
+
+  - DELETE /api/consultas/{id} (Cancelar uma consulta)
+
+### Disponibilidade
+
+  - POST /api/consultas/disponibilidade (Verificar horários disponíveis para um médico)
+
+  - GET /api/consultas/{medicoId}/dias-disponiveis?inicio={inicio}&fim={fim} (Verificar dias disponíveis para um médico em um período)
+
+## Testes
+
+Para executar os testes, utilize o comando:
+
+```plaintext
+mvn test
+```
+
