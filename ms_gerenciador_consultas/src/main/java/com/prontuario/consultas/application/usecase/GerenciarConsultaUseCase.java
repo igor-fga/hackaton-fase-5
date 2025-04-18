@@ -90,7 +90,16 @@ public class GerenciarConsultaUseCase {
             throw new HorarioOcupadoException();
         }
 
-        Consulta consulta = getConsulta(request, medico);
+        Consulta consulta = new Consulta();
+        consulta.setPacienteId(request.getPacienteId());
+        consulta.setTipoConsulta(request.getTipoConsulta());
+        consulta.setDataHora(request.getDataHora());
+        consulta.setEspecialidade(request.getEspecialidade());
+        consulta.setMedico(medico);
+        consulta.setMotivoConsulta(request.getMotivoConsulta());
+        consulta.setAnamnese(request.getAnamnese());
+        consulta.setDiagnostico(request.getDiagnostico());
+        consulta.setObservacoes(request.getObservacoes());
 
         Consulta consultaSalva = consultaRepository.save(consulta);
 
@@ -107,20 +116,6 @@ public class GerenciarConsultaUseCase {
                 consultaSalva.getDiagnostico(),
                 consultaSalva.getObservacoes()
         );
-    }
-
-    private static Consulta getConsulta(ConsultaRequest request, Medico medico) {
-        Consulta consulta = new Consulta();
-        consulta.setPacienteId(request.getPacienteId());
-        consulta.setTipoConsulta(request.getTipoConsulta());
-        consulta.setDataHora(request.getDataHora());
-        consulta.setEspecialidade(request.getEspecialidade());
-        consulta.setMedico(medico);
-        consulta.setMotivoConsulta(request.getMotivoConsulta());
-        consulta.setAnamnese(request.getAnamnese());
-        consulta.setDiagnostico(request.getDiagnostico());
-        consulta.setObservacoes(request.getObservacoes());
-        return consulta;
     }
 
     public Consulta salvarConsulta(Consulta consulta) {
