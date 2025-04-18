@@ -24,6 +24,8 @@ src/
 │   │   └── com.prontuario.consultas/
 │   │       ├── adapters/
 │   │       │   └── controllers/          # Controladores REST
+│   │       │       ├── dto/              # Objetos de resposta para erros (ErroResponse)
+│   │       │       └── exception/        # Manipuladores de exceções (ApiExceptionHandler)
 │   │       ├── application/
 │   │       │   ├── dto/                  # Objetos de transferência de dados (DTOs)
 │   │       │   ├── mapper/               # Mapeadores de entidades para DTOs

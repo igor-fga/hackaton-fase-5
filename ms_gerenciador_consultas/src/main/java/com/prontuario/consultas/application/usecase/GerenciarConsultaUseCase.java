@@ -5,6 +5,10 @@ import com.prontuario.consultas.application.dto.ConsultaResponse;
 import com.prontuario.consultas.domain.entity.Consulta;
 import com.prontuario.consultas.domain.entity.HorarioTrabalho;
 import com.prontuario.consultas.domain.entity.Medico;
+import com.prontuario.consultas.domain.exceptions.HorarioForaExpedienteException;
+import com.prontuario.consultas.domain.exceptions.HorarioOcupadoException;
+import com.prontuario.consultas.domain.exceptions.MedicoNaoAtendeNesteDiaException;
+import com.prontuario.consultas.domain.exceptions.MedicoNaoEncontradoException;
 import com.prontuario.consultas.domain.repository.ConsultaRepository;
 import com.prontuario.consultas.domain.repository.HorarioTrabalhoRepository;
 import com.prontuario.consultas.domain.repository.MedicoRepository;
@@ -58,7 +62,7 @@ public class GerenciarConsultaUseCase {
     public ConsultaResponse criarConsulta(ConsultaRequest request) {
 
         Medico medico = medicoRepository.findById(request.getMedicoId())
-                .orElseThrow(() -> new RuntimeException("Médico não encontrado"));
+                .orElseThrow(MedicoNaoEncontradoException::new);
 
         LocalDate dataConsulta = request.getDataHora().toLocalDate();
         LocalTime horaConsulta = request.getDataHora().toLocalTime();
@@ -69,11 +73,11 @@ public class GerenciarConsultaUseCase {
 
         HorarioTrabalho horarioTrabalho = horarioTrabalhoRepository
                 .findByMedicoIdAndDiaSemana(medico.getId(), diaSemana)
-                .orElseThrow(() -> new RuntimeException("Médico não atende neste dia da semana"));
+                .orElseThrow(MedicoNaoAtendeNesteDiaException::new);
 
         if (horaConsulta.isBefore(horarioTrabalho.getHoraInicio()) ||
                 horaConsulta.isAfter(horarioTrabalho.getHoraFim().minusMinutes(DURACAO_CONSULTA_MINUTOS))) {
-            throw new RuntimeException("Horário fora do expediente do médico");
+            throw new HorarioForaExpedienteException();
         }
 
         LocalDateTime inicioBusca = request.getDataHora();
@@ -83,19 +87,10 @@ public class GerenciarConsultaUseCase {
                 .findByMedicoIdAndDataHoraBetween(medico.getId(), inicioBusca, fimBusca);
 
         if (!consultasExistentes.isEmpty()) {
-            throw new RuntimeException("Horário já ocupado");
+            throw new HorarioOcupadoException();
         }
 
-        Consulta consulta = new Consulta();
-        consulta.setPacienteId(request.getPacienteId());
-        consulta.setTipoConsulta(request.getTipoConsulta());
-        consulta.setDataHora(request.getDataHora());
-        consulta.setEspecialidade(request.getEspecialidade());
-        consulta.setMedico(medico);
-        consulta.setMotivoConsulta(request.getMotivoConsulta());
-        consulta.setAnamnese(request.getAnamnese());
-        consulta.setDiagnostico(request.getDiagnostico());
-        consulta.setObservacoes(request.getObservacoes());
+        Consulta consulta = getConsulta(request, medico);
 
         Consulta consultaSalva = consultaRepository.save(consulta);
 
@@ -112,6 +107,20 @@ public class GerenciarConsultaUseCase {
                 consultaSalva.getDiagnostico(),
                 consultaSalva.getObservacoes()
         );
+    }
+
+    private static Consulta getConsulta(ConsultaRequest request, Medico medico) {
+        Consulta consulta = new Consulta();
+        consulta.setPacienteId(request.getPacienteId());
+        consulta.setTipoConsulta(request.getTipoConsulta());
+        consulta.setDataHora(request.getDataHora());
+        consulta.setEspecialidade(request.getEspecialidade());
+        consulta.setMedico(medico);
+        consulta.setMotivoConsulta(request.getMotivoConsulta());
+        consulta.setAnamnese(request.getAnamnese());
+        consulta.setDiagnostico(request.getDiagnostico());
+        consulta.setObservacoes(request.getObservacoes());
+        return consulta;
     }
 
     public Consulta salvarConsulta(Consulta consulta) {
