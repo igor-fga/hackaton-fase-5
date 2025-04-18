@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class GerenciarDisponibilidadeUseCase {
@@ -74,6 +75,33 @@ public class GerenciarDisponibilidadeUseCase {
                 request.getData(),
                 horariosDisponiveis
         );
+    }
+
+    public List<LocalDate> verificarDiasDisponiveis(Long medicoId, LocalDate inicio, LocalDate fim) {
+        Medico medico = medicoRepository.findById(medicoId)
+                .orElseThrow(() -> new RuntimeException("Médico não encontrado"));
+
+        // Buscar os dias da semana que o médico trabalha
+        List<HorarioTrabalho> horariosTrabalho = horarioTrabalhoRepository.findByMedicoId(medicoId);
+        List<String> diasSemanaTrabalho = horariosTrabalho.stream()
+                .map(HorarioTrabalho::getDiaSemana)
+                .collect(Collectors.toList());
+
+        // Iterar sobre o intervalo de datas e verificar os dias disponíveis
+        List<LocalDate> diasDisponiveis = new ArrayList<>();
+        LocalDate dataAtual = inicio;
+        while (!dataAtual.isAfter(fim)) {
+            String diaSemana = dataAtual.getDayOfWeek()
+                    .getDisplayName(TextStyle.FULL, new Locale("pt", "BR"))
+                    .toUpperCase();
+
+            if (diasSemanaTrabalho.contains(diaSemana)) {
+                diasDisponiveis.add(dataAtual);
+            }
+            dataAtual = dataAtual.plusDays(1);
+        }
+
+        return diasDisponiveis;
     }
 
     private List<LocalTime> calcularHorariosDisponiveis(Long medicoId, LocalDate data,

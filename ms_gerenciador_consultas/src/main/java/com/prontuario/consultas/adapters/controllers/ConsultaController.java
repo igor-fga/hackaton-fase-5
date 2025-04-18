@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -105,5 +106,17 @@ public class ConsultaController {
             @Valid @RequestBody VerificarDisponibilidadeRequest request) {
         DisponibilidadeResponse response = gerenciarDisponibilidadeUseCase.verificarDisponibilidade(request);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{medicoId}/dias-disponiveis")
+    public ResponseEntity<List<LocalDate>> verificarDiasDisponiveis(
+            @PathVariable Long medicoId,
+            @RequestParam String inicio,
+            @RequestParam String fim) {
+        LocalDate dataInicio = LocalDate.parse(inicio);
+        LocalDate dataFim = LocalDate.parse(fim);
+
+        List<LocalDate> diasDisponiveis = gerenciarDisponibilidadeUseCase.verificarDiasDisponiveis(medicoId, dataInicio, dataFim);
+        return ResponseEntity.ok(diasDisponiveis);
     }
 }

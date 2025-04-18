@@ -93,6 +93,9 @@ public class GerenciarConsultaUseCase {
         consulta.setEspecialidade(request.getEspecialidade());
         consulta.setMedico(medico);
         consulta.setMotivoConsulta(request.getMotivoConsulta());
+        consulta.setAnamnese(request.getAnamnese());
+        consulta.setDiagnostico(request.getDiagnostico());
+        consulta.setObservacoes(request.getObservacoes());
 
         Consulta consultaSalva = consultaRepository.save(consulta);
 
