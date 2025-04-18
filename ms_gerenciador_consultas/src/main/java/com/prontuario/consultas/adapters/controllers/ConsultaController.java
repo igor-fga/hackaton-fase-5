@@ -8,6 +8,7 @@ import com.prontuario.consultas.application.mapper.ConsultaMapper;
 import com.prontuario.consultas.application.usecase.GerenciarConsultaUseCase;
 import com.prontuario.consultas.application.usecase.GerenciarDisponibilidadeUseCase;
 import com.prontuario.consultas.domain.entity.Consulta;
+import com.prontuario.consultas.domain.entity.Medico;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -118,5 +119,11 @@ public class ConsultaController {
 
         List<LocalDate> diasDisponiveis = gerenciarDisponibilidadeUseCase.verificarDiasDisponiveis(medicoId, dataInicio, dataFim);
         return ResponseEntity.ok(diasDisponiveis);
+    }
+
+    @GetMapping("/medicos")
+    public ResponseEntity<List<Medico>> listarMedicos(@RequestParam(required = false) String especialidade) {
+        List<Medico> medicos = gerenciarConsultaUseCase.buscarMedicos(especialidade);
+        return ResponseEntity.ok(medicos);
     }
 }

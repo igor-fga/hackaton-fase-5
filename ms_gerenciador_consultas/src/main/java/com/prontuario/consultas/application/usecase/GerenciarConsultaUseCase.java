@@ -117,4 +117,14 @@ public class GerenciarConsultaUseCase {
     public Consulta salvarConsulta(Consulta consulta) {
         return consultaRepository.save(consulta);
     }
+
+    public List<Medico> buscarMedicos(String especialidade) {
+        if (especialidade == null || especialidade.trim().isEmpty()) {
+
+            return medicoRepository.findAll();
+        } else {
+
+            return medicoRepository.findByEspecialidade(especialidade);
+        }
+    }
 }

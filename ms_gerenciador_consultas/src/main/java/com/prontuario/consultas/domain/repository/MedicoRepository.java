@@ -9,4 +9,6 @@ public interface MedicoRepository {
     List<Medico> findByEspecialidade(String especialidade);
 
     Optional<Medico> findById(Long medicoId);
+
+    List<Medico> findAll();
 }

@@ -23,4 +23,9 @@ public class MedicoRepositoryImpl implements MedicoRepository {
     public Optional<Medico> findById(Long medicoId) {
         return medicoJpaRepository.findById(medicoId);
     }
+
+    @Override
+    public List<Medico> findAll() {
+        return medicoJpaRepository.findAll();
+    }
 }

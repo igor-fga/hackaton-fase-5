@@ -46,6 +46,8 @@ CREATE TABLE horario_trabalho (
 INSERT INTO horario_trabalho (medico_id, dia_semana, hora_inicio, hora_fim)
 SELECT id, 'SEGUNDA-FEIRA', '08:00:00', '12:00:00' FROM medico WHERE crm = '123456'; -- Dr. João Silva
 INSERT INTO horario_trabalho (medico_id, dia_semana, hora_inicio, hora_fim)
+SELECT id, 'SEXTA-FEIRA', '08:00:00', '12:00:00' FROM medico WHERE crm = '123456'; -- Dr. João Silva
+INSERT INTO horario_trabalho (medico_id, dia_semana, hora_inicio, hora_fim)
 SELECT id, 'TERÇA-FEIRA', '14:00:00', '18:00:00' FROM medico WHERE crm = '654321'; -- Dra. Maria Oliveira
 INSERT INTO horario_trabalho (medico_id, dia_semana, hora_inicio, hora_fim)
 SELECT id, 'QUARTA-FEIRA', '09:00:00', '17:00:00' FROM medico WHERE crm = '111111'; -- Dr. Carlos Pereira

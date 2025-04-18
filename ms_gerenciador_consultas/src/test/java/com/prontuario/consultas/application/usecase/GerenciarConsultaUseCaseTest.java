@@ -45,6 +45,7 @@ class GerenciarConsultaUseCaseTest {
     private GerenciarConsultaUseCase gerenciarConsultaUseCase;
 
     private Medico medico;
+    private Medico medico1;
     private Consulta consulta;
     private ConsultaRequest consultaRequest;
     private HorarioTrabalho horarioTrabalho;
@@ -64,6 +65,11 @@ class GerenciarConsultaUseCaseTest {
         medico.setId(1L);
         medico.setNome("Dr. João Silva");
         medico.setEspecialidade("Cardiologia");
+
+        medico1 = new Medico();
+        medico1.setId(2L);
+        medico1.setNome("Dra. Maria Oliveira");
+        medico1.setEspecialidade("Pediatria");
 
         // Configurando horário de trabalho
         horarioTrabalho = new HorarioTrabalho();
@@ -295,5 +301,44 @@ class GerenciarConsultaUseCaseTest {
         assertNotNull(resultado);
         assertEquals(consulta, resultado);
         verify(consultaRepository, times(1)).save(consulta);
+    }
+
+    @Test
+    @DisplayName("Deve retornar todos os médicos quando especialidade for nula")
+    void deveRetornarTodosMedicosQuandoEspecialidadeForNula() {
+        when(medicoRepository.findAll()).thenReturn(List.of(medico, medico1));
+
+        List<Medico> medicos = gerenciarConsultaUseCase.buscarMedicos(null);
+
+        assertThat(medicos).hasSize(2);
+        assertThat(medicos).containsExactlyInAnyOrder(medico, medico1);
+        verify(medicoRepository, times(1)).findAll();
+        verify(medicoRepository, never()).findByEspecialidade(anyString());
+    }
+
+    @Test
+    @DisplayName("Deve retornar todos os médicos quando especialidade for vazia")
+    void deveRetornarTodosMedicosQuandoEspecialidadeForVazia() {
+        when(medicoRepository.findAll()).thenReturn(List.of(medico, medico1));
+
+        List<Medico> medicos = gerenciarConsultaUseCase.buscarMedicos(" ");
+
+        assertThat(medicos).hasSize(2);
+        assertThat(medicos).containsExactlyInAnyOrder(medico, medico1);
+        verify(medicoRepository, times(1)).findAll();
+        verify(medicoRepository, never()).findByEspecialidade(anyString());
+    }
+
+    @Test
+    @DisplayName("Deve retornar médicos filtrados por especialidade")
+    void deveRetornarMedicosFiltradosPorEspecialidade() {
+        when(medicoRepository.findByEspecialidade("Cardiologia")).thenReturn(List.of(medico1));
+
+        List<Medico> medicos = gerenciarConsultaUseCase.buscarMedicos("Cardiologia");
+
+        assertThat(medicos).hasSize(1);
+        assertThat(medicos).containsExactly(medico1);
+        verify(medicoRepository, times(1)).findByEspecialidade("Cardiologia");
+        verify(medicoRepository, never()).findAll();
     }
 }

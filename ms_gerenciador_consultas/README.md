@@ -85,6 +85,8 @@ mvn clean install
 
   - DELETE /api/consultas/{id} (Cancelar uma consulta)
 
+  - GET /api/consultas/medicos (Consultar médicos disponíveis por especialidade)
+
 ### Disponibilidade
 
   - POST /api/consultas/disponibilidade (Verificar horários disponíveis para um médico)
