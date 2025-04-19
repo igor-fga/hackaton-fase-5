@@ -2,8 +2,6 @@ package com.prontuario.medicamentos.adapters.mapper;
 
 import com.prontuario.medicamentos.application.dto.MedicamentoDTO;
 import com.prontuario.medicamentos.domain.entity.Medicamento;
-import com.prontuario.medicamentos.domain.entity.MedicamentoEntity;
-
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,6 +10,7 @@ import java.util.stream.Collectors;
 @Component
 public class MedicamentoMapper {
 
+    // Converte o MedicamentoDTO para a entidade de domínio Medicamento
     public Medicamento toEntity(MedicamentoDTO dto) {
         Medicamento medicamento = new Medicamento(
                 dto.getNome(),
@@ -23,7 +22,7 @@ public class MedicamentoMapper {
         return medicamento;
     }
 
-
+    // Converte a entidade de domínio Medicamento para MedicamentoDTO
     public MedicamentoDTO toDTO(Medicamento entity) {
         MedicamentoDTO dto = new MedicamentoDTO();
         dto.setId(entity.getId());
@@ -34,27 +33,10 @@ public class MedicamentoMapper {
         return dto;
     }
 
-    public MedicamentoEntity toEntity(Medicamento domain) {
-        MedicamentoEntity entity = new MedicamentoEntity();
-        entity.setId(domain.getId());
-        entity.setNome(domain.getNome());
-        entity.setPrincipioAtivo(domain.getPrincipioAtivo());
-        entity.setFabricante(domain.getFabricante());
-        entity.setDosagem(domain.getDosagem());
-        return entity;
-    }
-
-    public Medicamento toDTO(MedicamentoEntity entity) {
-        Medicamento dto = new Medicamento(
-                entity.getNome(),
-                entity.getPrincipioAtivo(),
-                entity.getFabricante(),
-                entity.getDosagem()
-        );
-        dto.setId(entity.getId());
-        return dto;
-    }
+    // Converte uma lista de Medicamentos para uma lista de MedicamentoDTOs
     public List<MedicamentoDTO> toDTOList(List<Medicamento> medicamentos) {
-        return medicamentos.stream().map(this::toDTO).collect(Collectors.toList());
+        return medicamentos.stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
     }
 }

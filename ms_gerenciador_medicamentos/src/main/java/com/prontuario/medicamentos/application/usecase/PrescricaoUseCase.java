@@ -1,11 +1,11 @@
 package com.prontuario.medicamentos.application.usecase;
 
-
 import com.prontuario.medicamentos.domain.entity.Prescricao;
 import com.prontuario.medicamentos.adapters.respository.PrescricaoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class PrescricaoUseCase {
 

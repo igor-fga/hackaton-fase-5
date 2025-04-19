@@ -1,21 +1,42 @@
 package com.prontuario.medicamentos.adapters.mapper;
 
 import com.prontuario.medicamentos.application.dto.PrescricaoDTO;
+import com.prontuario.medicamentos.domain.entity.Medicamento;
 import com.prontuario.medicamentos.domain.entity.Prescricao;
-import com.prontuario.medicamentos.domain.entity.PrescricaoEntity;
+import com.prontuario.medicamentos.adapters.respository.MedicamentoRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
 public class PrescricaoMapper {
 
+    private final MedicamentoMapper medicamentoMapper;
+    private final MedicamentoRepository medicamentoRepository;
+
+    public PrescricaoMapper(MedicamentoMapper medicamentoMapper,
+                            MedicamentoRepository medicamentoRepository) {
+        this.medicamentoMapper = medicamentoMapper;
+        this.medicamentoRepository = medicamentoRepository;
+    }
+
     public Prescricao toDomain(PrescricaoDTO dto) {
+        List<Medicamento> medicamentos = dto.getMedicamentos().stream()
+                .map(medDto -> medicamentoRepository.buscarPorId(medDto.getId()))
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList());
+
+        if (medicamentos.isEmpty()) {
+            throw new RuntimeException("Nenhum medicamento válido encontrado");
+        }
+
         Prescricao prescricao = new Prescricao(
                 dto.getConsultaId(),
                 dto.getPacienteId(),
-                dto.getMedicamentosIds(),
+                medicamentos,
                 dto.getPosologia(),
                 dto.getDataInicio(),
                 dto.getDataTermino(),
@@ -31,7 +52,9 @@ public class PrescricaoMapper {
         dto.setId(domain.getId());
         dto.setConsultaId(domain.getConsultaId());
         dto.setPacienteId(domain.getPacienteId());
-        dto.setMedicamentosIds(domain.getMedicamentosIds());
+        dto.setMedicamentos(domain.getMedicamentos().stream()
+                .map(medicamentoMapper::toDTO)
+                .collect(Collectors.toList()));
         dto.setPosologia(domain.getPosologia());
         dto.setDataInicio(domain.getDataInicio());
         dto.setDataTermino(domain.getDataTermino());
@@ -40,41 +63,9 @@ public class PrescricaoMapper {
         return dto;
     }
 
-    public static PrescricaoEntity toEntity(Prescricao domain) {
-        PrescricaoEntity entity = new PrescricaoEntity();
-        entity.setId(domain.getId());
-        entity.setConsultaId(domain.getConsultaId());
-        entity.setPacienteId(domain.getPacienteId());
-        entity.setMedicamentosIds(domain.getMedicamentosIds());
-        entity.setPosologia(domain.getPosologia());
-        entity.setDataInicio(domain.getDataInicio());
-        entity.setDataTermino(domain.getDataTermino());
-        entity.setObservacoes(domain.getObservacoes());
-        entity.setAtiva(domain.getAtiva());
-
-        return entity;
-    }
-
-    public Prescricao toDomain(PrescricaoEntity entity) {
-        Prescricao domain = new Prescricao(
-                entity.getConsultaId(),
-                entity.getPacienteId(),
-                entity.getMedicamentosIds(),
-                entity.getPosologia(),
-                entity.getDataInicio(),
-                entity.getDataTermino(),
-                entity.getObservacoes(),
-                entity.getAtiva()
-        );
-        domain.setId(entity.getId());
-        return domain;
-    }
-
     public List<PrescricaoDTO> toDTOList(List<Prescricao> prescricoes) {
-        return prescricoes.stream().map(this::toDTO).collect(Collectors.toList());
-    }
-
-    public List<Prescricao> toDomainList(List<PrescricaoEntity> entities) {
-        return entities.stream().map(this::toDomain).collect(Collectors.toList());
+        return prescricoes.stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
     }
 }
