@@ -13,7 +13,7 @@ public class PrescricaoDTO {
     private Long id;
     private Long consultaId;
     private Long pacienteId;
-    private List<Long> medicamentosIds;
+    private List<MedicamentoDTO> medicamentos;
     private String posologia;
     private LocalDate dataInicio;
     private LocalDate dataTermino;

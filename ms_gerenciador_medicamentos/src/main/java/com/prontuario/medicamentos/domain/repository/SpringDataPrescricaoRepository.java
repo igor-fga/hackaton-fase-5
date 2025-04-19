@@ -10,4 +10,5 @@ public interface SpringDataPrescricaoRepository extends JpaRepository<Prescricao
     List<Prescricao> findByPacienteId(Long pacienteId);
     List<Prescricao> findByPacienteIdAndDataInicioLessThanEqualAndDataTerminoGreaterThanEqual(
             Long pacienteId, LocalDate inicio, LocalDate fim);
+
 }

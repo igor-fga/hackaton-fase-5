@@ -3,8 +3,8 @@ package com.prontuario.medicamentos.adapters.respository;
 import com.prontuario.medicamentos.domain.entity.Medicamento;
 import com.prontuario.medicamentos.domain.repository.SpringDataMedicamentoRepository;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Repository
@@ -18,18 +18,17 @@ public class MedicamentoRepositoryImpl implements MedicamentoRepository {
 
     @Override
     public Medicamento salvar(Medicamento medicamento) {
-        Objects.requireNonNull(medicamento, "Medicamento não pode ser nulo");
-        return springDataRepo.save(medicamento);  // Retorna a entidade diretamente
+        return springDataRepo.save(medicamento);
     }
 
     @Override
     public List<Medicamento> listarTodos() {
-        return springDataRepo.findAll();  // Retorna a lista de Medicamentos diretamente
+        return springDataRepo.findAll();
     }
 
     @Override
     public Optional<Medicamento> buscarPorId(Long id) {
-        return springDataRepo.findById(id);  // Retorna a entidade diretamente
+        return springDataRepo.findById(id);
     }
 
     @Override

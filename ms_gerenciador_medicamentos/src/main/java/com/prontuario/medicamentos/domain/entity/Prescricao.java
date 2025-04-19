@@ -17,8 +17,12 @@ public class Prescricao {
     private Long consultaId;
     private Long pacienteId;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<Long> medicamentosIds;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "prescricao_medicamento",
+            joinColumns = @JoinColumn(name = "prescricao_id"),
+            inverseJoinColumns = @JoinColumn(name = "medicamento_id"))
+    private List<Medicamento> medicamentos; // Alterado para List<Medicamento>
 
     private String posologia;
     private LocalDate dataInicio;
@@ -26,15 +30,14 @@ public class Prescricao {
     private String observacoes;
     private Boolean ativa;
 
-    // Construtores mantidos
     public Prescricao() {}
 
-    public Prescricao(Long consultaId, Long pacienteId, List<Long> medicamentosIds,
+    public Prescricao(Long consultaId, Long pacienteId, List<Medicamento> medicamentos,
                       String posologia, LocalDate dataInicio, LocalDate dataTermino,
                       String observacoes, Boolean ativa) {
         this.consultaId = consultaId;
         this.pacienteId = pacienteId;
-        this.medicamentosIds = medicamentosIds;
+        this.medicamentos = medicamentos;
         this.posologia = posologia;
         this.dataInicio = dataInicio;
         this.dataTermino = dataTermino;
