@@ -1,9 +1,7 @@
 package com.prontuario.medicamentos.adapters.controllers;
 
-import com.prontuario.medicamentos.adapters.mapper.MedicamentoMapper;
 import com.prontuario.medicamentos.application.dto.MedicamentoDTO;
 import com.prontuario.medicamentos.application.usecase.MedicamentoUseCase;
-import com.prontuario.medicamentos.domain.entity.Medicamento;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,42 +13,39 @@ import java.util.List;
 public class MedicamentoController {
 
     private final MedicamentoUseCase medicamentoUseCase;
-    private final MedicamentoMapper medicamentoMapper;
 
-    public MedicamentoController(MedicamentoUseCase medicamentoUseCase, MedicamentoMapper medicamentoMapper) {
+    public MedicamentoController(MedicamentoUseCase medicamentoUseCase) {
         this.medicamentoUseCase = medicamentoUseCase;
-        this.medicamentoMapper = medicamentoMapper;
     }
 
     @PostMapping
     public ResponseEntity<MedicamentoDTO> cadastrar(@Valid @RequestBody MedicamentoDTO dto) {
-        Medicamento medicamento = medicamentoMapper.toEntity(dto);
-        Medicamento salvo = medicamentoUseCase.cadastrar(medicamento);
-        return ResponseEntity
-                .status(201)
-                .body(medicamentoMapper.toDTO(salvo));
+        MedicamentoDTO salvo = medicamentoUseCase.cadastrar(dto);
+        return ResponseEntity.status(201).body(salvo);
     }
+
     @GetMapping
     public ResponseEntity<List<MedicamentoDTO>> listarTodos() {
-        var medicamentos = medicamentoUseCase.listarTodos();
-        return ResponseEntity.ok(medicamentoMapper.toDTOList(medicamentos));
+        List<MedicamentoDTO> medicamentos = medicamentoUseCase.listarTodos();
+        return ResponseEntity.ok(medicamentos);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<MedicamentoDTO> buscarPorId(@PathVariable Long id) {
-        Medicamento medicamento = medicamentoUseCase.buscarPorId(id);
-        return ResponseEntity.ok(medicamentoMapper.toDTO(medicamento));
+        MedicamentoDTO medicamento = medicamentoUseCase.buscarPorId(id);
+        return ResponseEntity.ok(medicamento);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MedicamentoDTO> atualizar(@PathVariable Long id, @RequestBody MedicamentoDTO dto) {
-        Medicamento atualizado = medicamentoUseCase.atualizar(id, medicamentoMapper.toEntity(dto));
-        return ResponseEntity.ok(medicamentoMapper.toDTO(atualizado));
+    public ResponseEntity<MedicamentoDTO> atualizar(@PathVariable Long id, @Valid @RequestBody MedicamentoDTO dto) {
+        MedicamentoDTO atualizado = medicamentoUseCase.atualizar(id, dto);
+        return ResponseEntity.ok(atualizado);
     }
 
     @GetMapping("/busca")
     public ResponseEntity<List<MedicamentoDTO>> buscarPorNome(@RequestParam String nome) {
-        var medicamentos = medicamentoUseCase.buscarPorNome(nome);
-        return ResponseEntity.ok(medicamentoMapper.toDTOList(medicamentos));
+        List<MedicamentoDTO> medicamentos = medicamentoUseCase.buscarPorNome(nome);
+        return ResponseEntity.ok(medicamentos);
     }
 
     @DeleteMapping("/{id}")
@@ -58,7 +53,4 @@ public class MedicamentoController {
         medicamentoUseCase.deletar(id);
         return ResponseEntity.noContent().build();
     }
-
-
-
 }

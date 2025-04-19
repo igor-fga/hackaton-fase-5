@@ -2,7 +2,6 @@ package com.prontuario.medicamentos.adapters.mapper;
 
 import com.prontuario.medicamentos.application.dto.PrescricaoDTO;
 import com.prontuario.medicamentos.domain.entity.Prescricao;
-import com.prontuario.medicamentos.domain.entity.PrescricaoEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -40,41 +39,7 @@ public class PrescricaoMapper {
         return dto;
     }
 
-    public static PrescricaoEntity toEntity(Prescricao domain) {
-        PrescricaoEntity entity = new PrescricaoEntity();
-        entity.setId(domain.getId());
-        entity.setConsultaId(domain.getConsultaId());
-        entity.setPacienteId(domain.getPacienteId());
-        entity.setMedicamentosIds(domain.getMedicamentosIds());
-        entity.setPosologia(domain.getPosologia());
-        entity.setDataInicio(domain.getDataInicio());
-        entity.setDataTermino(domain.getDataTermino());
-        entity.setObservacoes(domain.getObservacoes());
-        entity.setAtiva(domain.getAtiva());
-
-        return entity;
-    }
-
-    public Prescricao toDomain(PrescricaoEntity entity) {
-        Prescricao domain = new Prescricao(
-                entity.getConsultaId(),
-                entity.getPacienteId(),
-                entity.getMedicamentosIds(),
-                entity.getPosologia(),
-                entity.getDataInicio(),
-                entity.getDataTermino(),
-                entity.getObservacoes(),
-                entity.getAtiva()
-        );
-        domain.setId(entity.getId());
-        return domain;
-    }
-
     public List<PrescricaoDTO> toDTOList(List<Prescricao> prescricoes) {
         return prescricoes.stream().map(this::toDTO).collect(Collectors.toList());
-    }
-
-    public List<Prescricao> toDomainList(List<PrescricaoEntity> entities) {
-        return entities.stream().map(this::toDomain).collect(Collectors.toList());
     }
 }
