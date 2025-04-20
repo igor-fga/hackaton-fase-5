@@ -16,9 +16,12 @@ public class PrescricaoUseCase {
     }
 
     public Prescricao salvar(Prescricao prescricao) {
+        if (prescricao.getMedicamentos() == null || prescricao.getMedicamentos().isEmpty()) {
+            throw new IllegalArgumentException("A prescrição deve conter ao menos um medicamento.");
+        }
+
         return repository.salvar(prescricao);
     }
-
     public List<Prescricao> listarPorPaciente(Long pacienteId) {
         return repository.listarPorPaciente(pacienteId);
     }
