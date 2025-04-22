@@ -57,16 +57,36 @@ src/
 
 - Autenticação via Keycloak com JWT
 - RBAC baseado em perfis de usuário (médico, enfermeiro, admin)
+  
+
+## Configurações do Projeto
+1. Pré-requisitos:
+   - Java 17
+   - MySQL
+   - Maven
+    
+2. Configuração do Banco de Dados:
+    - Certifique-se de que o MySQL esteja em execução.
+    - Crie um banco de dados chamado prontuario.
+
+```plaintext
+spring.datasource.url=jdbc:mysql://localhost:3306/prontuario?serverTimezone=America/Sao_Paulo&useSSL=false
+spring.datasource.username=SEU_USUARIO
+spring.datasource.password=SUA_SENHA
+```
 
 ## 🧪 Como Executar
-
+ 
 ### Clone o projeto
 ```bash
 git clone https://github.com/igor-fga/hackaton-fase-5
 cd ms-{nome do microserviço}
 ```
-
-###Execute com Maven
+### Compile o projeto
+```plaintext
+mvn clean install
+```
+### Execute com Maven
 ```bash
 ./mvnw spring-boot:run
 ```
