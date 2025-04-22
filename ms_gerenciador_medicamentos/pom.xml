@@ -40,6 +40,16 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- Dependências para utilização do Keycloak -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+
 		<!-- Runtime Dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
