@@ -14,7 +14,7 @@
 
 ```
 
-## 🔧 Acessar o Spring Boot Actuator
+## 🔧 Acessar o Spring Boot Actuator e Prometheus
 
 Endpoints para monitoramento e gestão da aplicação:
 
@@ -23,6 +23,7 @@ Endpoints para monitoramento e gestão da aplicação:
 http://localhost:8082/actuator/health
 http://localhost:8082/actuator/info
 http://localhost:8082/actuator/metrics
+http://localhost:8082/actuator/prometheus
 ```
 
 ## ✉️ Para testar envio de e-mail usando o Gmail, seguir os passos abaixo:
