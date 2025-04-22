@@ -1,5 +1,5 @@
 # hackaton-fase-5
-Projeto para Hackaton FIAP
+Projeto para Hackaton FIAP visando a construção de uma solução de Prontuário Eletrônico para o SUS, com foco em escalabilidade e segurança.  
 
 ## 🛠️ Tecnologias utilizadas:
 - **Java 17**
