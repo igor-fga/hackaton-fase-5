@@ -1,13 +1,16 @@
 # hackaton-fase-5
 Projeto para Hackaton FIAP
 
+## 🛠️ Tecnologias utilizadas:
+
+
 ## 📌 Pré-requisitos
 - Java 17 ou superior
 - Maven
 - Banco de dados MySql
 - Arquivo application.properties ou .yaml preenchido corretamente com senha do Banco de Dados
 
-## 🛠️ Estrutura do Projeto
+## 📁 Estrutura do Projeto
 ```plaintext
 src/
 ├── main/
@@ -79,6 +82,11 @@ spring.datasource.password=SUA_SENHA
 git clone https://github.com/igor-fga/hackaton-fase-5
 cd ms-{nome do microserviço}
 ```
+
+### Navegue até o diretorio do projeto:
+```plaintext
+cd ms_gerenciador_{escolha o serviço}
+```
 ### Compile o projeto
 ```plaintext
 mvn clean install
@@ -87,3 +95,7 @@ mvn clean install
 ```bash
 ./mvnw spring-boot:run
 ```
+## 📌 Para mais informações sobre os serviços, acessar o Readme.md de cada projeto:
+ms_gerenciador_consultas
+ms_gerenciador_medicamentos
+ms_gerenciador_pacientes
