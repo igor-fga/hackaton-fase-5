@@ -37,19 +37,6 @@ src/
                 └── usecase/              # Testes dos casos de uso
 ```
 
-
-## 🧪 Como Executar
-
-### Clone o projeto
-```bash
-git clone https://github.com/igor-fga/hackaton-fase-5
-cd ms-{nome do microserviço}
-```
-
-###Execute com Maven
-```bash
-./mvnw spring-boot:run
-```
 ---
 
 ## 🧩 Entidades de Domínio
@@ -66,9 +53,20 @@ cd ms-{nome do microserviço}
 
 ---
 
-
 ## 🔒 Segurança
 
 - Autenticação via Keycloak com JWT
 - RBAC baseado em perfis de usuário (médico, enfermeiro, admin)
 
+## 🧪 Como Executar
+
+### Clone o projeto
+```bash
+git clone https://github.com/igor-fga/hackaton-fase-5
+cd ms-{nome do microserviço}
+```
+
+###Execute com Maven
+```bash
+./mvnw spring-boot:run
+```
