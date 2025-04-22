@@ -2,10 +2,10 @@
 Projeto para Hackaton FIAP
 
 ## Pré-requisitos
-Java 17 ou superior
-Maven
-Banco de dados MySql
-Arquivo application.properties ou .yaml preenchido corretamente com senha do Banco de Dados
+- Java 17 ou superior
+- Maven
+- Banco de dados MySql
+- Arquivo application.properties ou .yaml preenchido corretamente com senha do Banco de Dados
 
 
 ## 🧪 Como Executar
