@@ -21,7 +21,7 @@ Projeto para Hackaton FIAP visando a construção de uma solução de Prontuári
 - Java 17 ou superior
 - Maven
 - Banco de dados MySql
-- Arquivo application.properties ou .yaml preenchido corretamente com senha do Banco de Dados
+- Arquivo application.properties ou .yaml preenchido corretamente 
 
 ---
 
