@@ -4,16 +4,15 @@ Projeto para Hackaton FIAP
 ##🧪 Como Executar
 
 # Clone o projeto
+```bash
 git clone https://github.com/igor-fga/hackaton-fase-5
 cd ms-{nome do microserviço}
-
+```
 
 # Execute com Maven
+```bash
 ./mvnw spring-boot:run
-
-# Ou com Docker Compose (se configurado)
-docker-compose up --build
-
+```
 ---
 
 ## 🧩 Entidades de Domínio
