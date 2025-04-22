@@ -1,0 +1,1824 @@
+{
+	"info": {
+		"_postman_id": "5cf3a170-4875-4f7b-a3f0-451ed484ad46",
+		"name": "Hackaton-fase-5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44226906",
+		"_collection_link": "https://tech-challenge-ps-fiap.postman.co/workspace/4f6f3282-dbd4-440a-835e-1ba5a2cdf888/collection/7932331-5cf3a170-4875-4f7b-a3f0-451ed484ad46?action=share&source=collection_link&creator=44226906"
+	},
+	"item": [
+		{
+			"name": "msGerenciadorConsultas",
+			"item": [
+				{
+					"name": "Obter Token - ADM",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"token\", jsonData.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "api-hospital",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "aMAwf8uPFFu4cS2uSHWW7cvhGIBx8na3",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "adm1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "adm123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/realms/hospital/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"realms",
+								"hospital",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Token - Medico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"token\", jsonData.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "api-medico",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "cwKz5NmYdaZ3MQSUvg75OA8hEbAlbQeH",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "medico1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "medico123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/realms/hospital/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"realms",
+								"hospital",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Token - Paciente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"token\", jsonData.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "api-paciente",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "AsTKTnZVRV7AKsYEMVg1Aa8l23iSLhV6",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "paciente1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "paciente123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/realms/hospital/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"realms",
+								"hospital",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar especialidades",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8083/api/consultas/medicos?especialidade=Cardiologia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"consultas",
+								"medicos"
+							],
+							"query": [
+								{
+									"key": "especialidade",
+									"value": "Cardiologia"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/consultas/medicos?especialidade=Cardiologia",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"consultas",
+										"medicos"
+									],
+									"query": [
+										{
+											"key": "especialidade",
+											"value": "Cardiologia"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Apr 2025 12:42:49 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"nome\": \"Dr. João Silva\",\n        \"crm\": \"123456\",\n        \"especialidade\": \"Cardiologia\"\n    },\n    {\n        \"id\": 13,\n        \"nome\": \"Dr. Eduardo Silva\",\n        \"crm\": \"1111111\",\n        \"especialidade\": \"Cardiologia\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Dias disponiveis por medico",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8083/api/consultas/1/dias-disponiveis?inicio=2025-04-18&fim=2025-04-30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"consultas",
+								"1",
+								"dias-disponiveis"
+							],
+							"query": [
+								{
+									"key": "inicio",
+									"value": "2025-04-18"
+								},
+								{
+									"key": "fim",
+									"value": "2025-04-30"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/consultas/10/dias-disponiveis?inicio=2025-04-17&fim=2025-04-30",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"consultas",
+										"10",
+										"dias-disponiveis"
+									],
+									"query": [
+										{
+											"key": "inicio",
+											"value": "2025-04-17"
+										},
+										{
+											"key": "fim",
+											"value": "2025-04-30"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Apr 2025 22:59:26 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    \"2025-04-18\",\n    \"2025-04-25\"\n]"
+						}
+					]
+				},
+				{
+					"name": "Disponibilidade de horário por médico",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"medicoId\": 1,\n    \"data\": \"2025-04-28\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/api/consultas/disponibilidade",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"consultas",
+								"disponibilidade"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"medicoId\": 3,\n  \"data\": \"2025-04-16\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/consultas/disponibilidade",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"consultas",
+										"disponibilidade"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Apr 2025 04:00:32 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"medicoId\": 3,\n    \"nomeMedico\": \"Dr. Carlos Pereira\",\n    \"data\": \"2025-04-16\",\n    \"horariosDisponiveis\": [\n        \"09:30:00\",\n        \"10:30:00\",\n        \"11:00:00\",\n        \"11:30:00\",\n        \"12:00:00\",\n        \"12:30:00\",\n        \"13:00:00\",\n        \"13:30:00\",\n        \"14:00:00\",\n        \"14:30:00\",\n        \"15:00:00\",\n        \"15:30:00\",\n        \"16:00:00\",\n        \"16:30:00\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Agendar Consulta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pacienteId\": 2,\n    \"dataHora\": \"2025-04-28T08:00:00\",\n    \"tipoConsulta\": \"CONSULTA\",\n    \"medicoId\": 1,\n    \"especialidade\": \"Cardiologia\",\n    \"motivoConsulta\": \"Revisão de tratamento para hipertensão\",\n    \"anamnese\": \"Paciente refere estar seguindo a medicação prescrita e adotando hábitos de vida saudáveis. Nega queixas recentes.\",\n    \"diagnostico\": \"Hipertensão arterial controlada\",\n    \"observacoes\": \"Manter a mesma medicação. Agendar consulta de retorno em 3 meses e solicitar novos exames.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/api/consultas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"consultas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"pacienteId\": 4,\n    \"tipoConsulta\": \"CONSULTA\",\n    \"dataHora\": \"2025-04-28T10:30:00\",\n    \"medicoId\": 1,\n    \"motivoConsulta\": \"Dor no Peito\",\n    \"anamnese\": \"Paciente relata dor no peito constante há 3 dias.\",\n    \"diagnostico\": \"Pessoa habitos errados\",\n    \"observacoes\": \"Batimento acelerado\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/consultas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"consultas"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Apr 2025 13:32:44 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 14,\n    \"pacienteId\": 4,\n    \"tipoConsulta\": \"CONSULTA\",\n    \"dataHora\": \"2025-04-28T10:30:00\",\n    \"especialidade\": null,\n    \"medicoId\": 1,\n    \"nomeMedico\": \"Dr. João Silva\",\n    \"motivoConsulta\": \"Dor no Peito\",\n    \"anamnese\": \"Paciente relata dor no peito constante há 3 dias.\",\n    \"diagnostico\": \"Pessoa habitos errados\",\n    \"observacoes\": \"Batimento acelerado\"\n}"
+						},
+						{
+							"name": "Fail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"pacienteId\": 1,\n    \"tipoConsulta\": \"CONSULTA\",\n    \"dataHora\": \"2025-04-29T09:30:00\",\n    \"medicoId\": 1,\n    \"motivoConsulta\": \"Dor no Peito\",\n    \"anamnese\": \"Paciente relata dor no peito constante há 3 dias.\",\n    \"diagnostico\": \"Pessoa habitos errados\",\n    \"observacoes\": \"Batimento acelerado\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/consultas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"consultas"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Apr 2025 13:31:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mensagem\": \"Médico não atende neste dia da semana\",\n    \"timestamp\": \"2025-04-18T10:31:50.499247\"\n}"
+						},
+						{
+							"name": "Fail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"pacienteId\": 5,\n    \"tipoConsulta\": \"CONSULTA\",\n    \"dataHora\": \"2025-04-28T10:30:00\",\n    \"medicoId\": 1,\n    \"motivoConsulta\": \"Dor no Peito\",\n    \"anamnese\": \"Paciente relata dor no peito constante há 3 dias.\",\n    \"diagnostico\": \"Pessoa habitos errados\",\n    \"observacoes\": \"Batimento acelerado\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/consultas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"consultas"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Apr 2025 13:33:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mensagem\": \"Horário já ocupado\",\n    \"timestamp\": \"2025-04-18T10:33:02.656468\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Buscar Consulta",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8083/api/consultas/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"consultas",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/consultas/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"consultas",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Apr 2025 23:41:00 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"pacienteId\": 1,\n    \"tipoConsulta\": null,\n    \"dataHora\": \"2025-11-01T10:00:00\",\n    \"especialidade\": null,\n    \"medicoId\": 3,\n    \"motivoConsulta\": \"Dor de barriga gigante\",\n    \"anamnese\": \"Paciente relata dor de barriga constante há 3 dias.\",\n    \"diagnostico\": \"Gordo\",\n    \"observacoes\": \"Recomendar repouso e jejum.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Buscar Consulta por Paciente",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8083/api/consultas/paciente/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"consultas",
+								"paciente",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/consultas/paciente/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"consultas",
+										"paciente",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Apr 2025 23:41:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"pacienteId\": 1,\n        \"tipoConsulta\": null,\n        \"dataHora\": \"2023-12-01T10:00:00\",\n        \"especialidade\": null,\n        \"medicoId\": 2,\n        \"motivoConsulta\": \"Dor de cabeça\",\n        \"anamnese\": \"Paciente relata dor de cabeça constante há 3 dias.\",\n        \"diagnostico\": \"Enxaqueca\",\n        \"observacoes\": \"Recomendar repouso e hidratação.\"\n    },\n    {\n        \"id\": 2,\n        \"pacienteId\": 1,\n        \"tipoConsulta\": null,\n        \"dataHora\": \"2025-11-01T10:00:00\",\n        \"especialidade\": null,\n        \"medicoId\": 3,\n        \"motivoConsulta\": \"Dor de barriga gigante\",\n        \"anamnese\": \"Paciente relata dor de barriga constante há 3 dias.\",\n        \"diagnostico\": \"Gordo\",\n        \"observacoes\": \"Recomendar repouso e jejum.\"\n    },\n    {\n        \"id\": 4,\n        \"pacienteId\": 1,\n        \"tipoConsulta\": null,\n        \"dataHora\": \"2025-11-01T10:00:00\",\n        \"especialidade\": null,\n        \"medicoId\": 3,\n        \"motivoConsulta\": \"Dor de barriga gigante\",\n        \"anamnese\": \"Paciente relata dor de barriga constante há 3 dias.\",\n        \"diagnostico\": \"Gordo\",\n        \"observacoes\": \"Recomendar repouso e jejum.\"\n    },\n    {\n        \"id\": 5,\n        \"pacienteId\": 1,\n        \"tipoConsulta\": null,\n        \"dataHora\": \"2025-11-01T10:00:00\",\n        \"especialidade\": null,\n        \"medicoId\": 3,\n        \"motivoConsulta\": \"Dor de barriga gigante\",\n        \"anamnese\": \"Paciente relata dor de barriga constante há 3 dias.\",\n        \"diagnostico\": \"Gordo\",\n        \"observacoes\": \"Recomendar repouso e jejum 2.\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Atualizar Consulta",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pacienteId\": 2,\n    \"dataHora\": \"2025-04-28T09:00:00\",\n    \"tipoConsulta\": \"CONSULTA\",\n    \"medicoId\": 1,\n    \"especialidade\": \"Cardiologia\",\n    \"motivoConsulta\": \"Revisão de tratamento para hipertensão\",\n    \"anamnese\": \"Paciente refere estar seguindo a medicação prescrita e adotando hábitos de vida saudáveis. Nega queixas recentes.\",\n    \"diagnostico\": \"Hipertensão arterial controlada\",\n    \"observacoes\": \"Manter a mesma medicação. Agendar consulta de retorno em 3 meses e solicitar novos exames.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/api/consultas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"consultas",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"pacienteId\": 2,\n  \"tipoConsulta\": \"CONSULTA\",\n  \"dataHora\": \"2025-04-16T09:00:00\",\n  \"especialidade\": \"Ortopedia\",\n  \"medicoId\": 3,\n  \"motivoConsulta\": \"Dor no pé\",\n  \"anamnese\": \"Paciente relata dor forte ao andar\",\n  \"diagnostico\": \"Falta de calcio\",\n  \"observacoes\": \"Dar remedio para dor\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/consultas/8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"consultas",
+										"8"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 15 Apr 2025 03:59:22 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 8,\n    \"pacienteId\": 2,\n    \"tipoConsulta\": \"CONSULTA\",\n    \"dataHora\": \"2025-04-16T09:00:00\",\n    \"especialidade\": \"Ortopedia\",\n    \"medicoId\": 3,\n    \"nomeMedico\": \"Dr. Carlos Pereira\",\n    \"motivoConsulta\": \"Dor no pé\",\n    \"anamnese\": \"Paciente relata dor forte ao andar\",\n    \"diagnostico\": \"Falta de calcio\",\n    \"observacoes\": \"Dar remedio para dor\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Cancelar Consulta",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8083/api/consultas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"consultas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Consultas período",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8083/api/consultas/periodo?inicio=2024-01-01T00:00:00&fim=2025-12-31T23:59:59",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"consultas",
+								"periodo"
+							],
+							"query": [
+								{
+									"key": "inicio",
+									"value": "2024-01-01T00:00:00"
+								},
+								{
+									"key": "fim",
+									"value": "2025-12-31T23:59:59"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/consultas/periodo?inicio=2024-01-01T00:00:00&fim=2025-12-31T23:59:59",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"consultas",
+										"periodo"
+									],
+									"query": [
+										{
+											"key": "inicio",
+											"value": "2024-01-01T00:00:00"
+										},
+										{
+											"key": "fim",
+											"value": "2025-12-31T23:59:59"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Apr 2025 23:40:24 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 2,\n        \"pacienteId\": 1,\n        \"tipoConsulta\": null,\n        \"dataHora\": \"2025-11-01T10:00:00\",\n        \"especialidade\": null,\n        \"medicoId\": 3,\n        \"motivoConsulta\": \"Dor de barriga gigante\",\n        \"anamnese\": \"Paciente relata dor de barriga constante há 3 dias.\",\n        \"diagnostico\": \"Gordo\",\n        \"observacoes\": \"Recomendar repouso e jejum.\"\n    },\n    {\n        \"id\": 3,\n        \"pacienteId\": 3,\n        \"tipoConsulta\": null,\n        \"dataHora\": \"2025-07-01T10:00:00\",\n        \"especialidade\": null,\n        \"medicoId\": 3,\n        \"motivoConsulta\": \"Dor de barriga\",\n        \"anamnese\": \"Paciente relata dor de barriga constante há 3 dias.\",\n        \"diagnostico\": \"Gordo\",\n        \"observacoes\": \"Recomendar repouso e jejum.\"\n    },\n    {\n        \"id\": 4,\n        \"pacienteId\": 1,\n        \"tipoConsulta\": null,\n        \"dataHora\": \"2025-11-01T10:00:00\",\n        \"especialidade\": null,\n        \"medicoId\": 3,\n        \"motivoConsulta\": \"Dor de barriga gigante\",\n        \"anamnese\": \"Paciente relata dor de barriga constante há 3 dias.\",\n        \"diagnostico\": \"Gordo\",\n        \"observacoes\": \"Recomendar repouso e jejum.\"\n    },\n    {\n        \"id\": 5,\n        \"pacienteId\": 1,\n        \"tipoConsulta\": null,\n        \"dataHora\": \"2025-11-01T10:00:00\",\n        \"especialidade\": null,\n        \"medicoId\": 3,\n        \"motivoConsulta\": \"Dor de barriga gigante\",\n        \"anamnese\": \"Paciente relata dor de barriga constante há 3 dias.\",\n        \"diagnostico\": \"Gordo\",\n        \"observacoes\": \"Recomendar repouso e jejum 2.\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "msGerenciadorPacientes",
+			"item": [
+				{
+					"name": "Obter Token - Medico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"token\", jsonData.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "api-medico",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "cwKz5NmYdaZ3MQSUvg75OA8hEbAlbQeH",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "medico1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "medico123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/realms/hospital/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"realms",
+								"hospital",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Token - Paciente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"token\", jsonData.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "api-paciente",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "AsTKTnZVRV7AKsYEMVg1Aa8l23iSLhV6",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "paciente1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "paciente123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/realms/hospital/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"realms",
+								"hospital",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postCadastrarPaciente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nomeCompleto\": \"João da Silva\",\r\n  \"dataNascimento\": \"15/08/1985\",\r\n  \"genero\": \"MASCULINO\",\r\n  \"cpf\": \"32529981817\",\r\n  \"numeroProntuario\": \"1234567\",\r\n  \"email\": \"joao.silva@email.com\",\r\n  \"endereco\": \"Rua das Flores, 123 - São Paulo, SP\",\r\n  \"contato\": \"(11) 98765-4321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPacientesAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8082/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPacienteId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8082/api/pacientes/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"pacientes",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPacienteCpf",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8082/api/pacientes/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"pacientes",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePacienteId",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8082/api/pacientes/26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"pacientes",
+								"26"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AlteracaoCadastroPaciente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"nomeCompleto\": \"Vagner Anselmo Braz\",\r\n        \"dataNascimento\": \"29/02/1980\",\r\n        \"genero\": \"MASCULINO\",\r\n        \"cpf\": \"29708504866\",\r\n        \"numeroProntuario\": \"1234567\",\r\n        \"email\": \"anselmobraz@hotmail.com\",\r\n        \"endereco\": \"Rua Floriza Klein Vasconscelos, nro 38, Bairro: Vila Nova Osasco, Osasco, SP\",\r\n        \"contato\": \"(11)96739 2706\"\r\n    } ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/pacientes/24",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"pacientes",
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPacienteNome_Ordenado",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8082/api/pacientes/nome_ordenado?nome=Artur&page=0&size=5&sort=nomeCompleto,asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"pacientes",
+								"nome_ordenado"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "Artur"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								},
+								{
+									"key": "sort",
+									"value": "nomeCompleto,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "msGerenciadorMendicamento",
+			"item": [
+				{
+					"name": "Obter Token - Medico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"token\", jsonData.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "api-medico",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "cwKz5NmYdaZ3MQSUvg75OA8hEbAlbQeH",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "medico1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "medico123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/realms/hospital/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"realms",
+								"hospital",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Token - Farmaceutico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"token\", jsonData.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "api-farmaceutico",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "W7F8fmcDAe6iIV9Pc2XMYB3PlY28XZFu",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "farmaceutico1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "farmaceutico123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/realms/hospital/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"realms",
+								"hospital",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Medicamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Paracetamol\",\r\n  \"principioAtivo\": \"dosagem\",\r\n  \"fabricante\": \"Ativo\",\r\n  \"dosagem\": \"1min\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/medicamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"medicamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar todos Medicamento",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/api/medicamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"medicamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por ID Medicamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/medicamentos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"medicamentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por nome Medicamento",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/medicamentos/busca?nome=Paracetamol",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"medicamentos",
+								"busca"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "Paracetamol"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Medicamento",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"nome\": \"Paracetamol Atualizado\",\r\n  \"principioAtivo\": \"dosagem\",\r\n  \"fabricante\": \"Ativo\",\r\n  \"dosagem\": \"750mg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/medicamentos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"medicamentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir Medicamento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/medicamentos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"medicamentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Prescrição",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"consultaId\": 12345,\r\n  \"pacienteId\": 67890,\r\n  \"medicamentos\": [\r\n    {\r\n      \"id\": 1  // Apenas o ID é necessário se os medicamentos já existirem\r\n    }\r\n  ],\r\n  \"posologia\": \"1 comprimido por dia\",\r\n  \"dataInicio\": \"2025-04-19\",\r\n  \"dataTermino\": \"2025-05-22\",\r\n  \"observacoes\": \"Nenhuma observação adicional\",\r\n  \"ativa\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/prescricoes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"prescricoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar todas Prescrições",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/prescricoes/paciente/67890",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"prescricoes",
+								"paciente",
+								"67890"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Prescrições ativas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/prescricoes/ativas/paciente/67890",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"prescricoes",
+								"ativas",
+								"paciente",
+								"67890"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
