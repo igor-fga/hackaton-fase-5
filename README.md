@@ -151,9 +151,11 @@ hackaton-fase-5/Hackaton-fase-5.postman_collection.json at main · igor-fga/hack
 --- 
 
 ## 📌 Para mais informações sobre os serviços, acessar o Readme.md de cada projeto:
-ms_gerenciador_consultas = https://github.com/igor-fga/hackaton-fase-5/blob/main/ms_gerenciador_consultas/README.md  
-ms_gerenciador_medicamentos = https://github.com/igor-fga/hackaton-fase-5/blob/main/ms_gerenciador_medicamentos/README.md
-ms_gerenciador_pacientes = https://github.com/igor-fga/hackaton-fase-5/blob/main/ms_gerenciador_pacientes/README.md
+- ms_gerenciador_consultas = https://github.com/igor-fga/hackaton-fase-5/blob/main/ms_gerenciador_consultas/README.md  
+
+- ms_gerenciador_medicamentos = https://github.com/igor-fga/hackaton-fase-5/blob/main/ms_gerenciador_medicamentos/README.md
+
+- ms_gerenciador_pacientes = https://github.com/igor-fga/hackaton-fase-5/blob/main/ms_gerenciador_pacientes/README.md
 
 --- 
 
