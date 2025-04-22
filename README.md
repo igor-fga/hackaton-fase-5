@@ -119,6 +119,31 @@ mvn test
 ```
 ---
 
+## 📦 URL das imagens dos serviços no Docker HUB
+```bash
+pacientes-ms - https://hub.docker.com/repository/docker/michaeltorto/pacientes-ms/general
+consultas-ms - https://hub.docker.com/repository/docker/michaeltorto/medicamentos-ms/general
+medicamentos-ms - https://hub.docker.com/repository/docker/michaeltorto/consultas-ms/general
+```
+### Requisitos necessários
+```bash
+Docker e docker-compose instalados.
+```
+```bash
+Utilizar os arquivos abaixo: 
+
+```
+### Dentro do diretório hackaton-fase-5-docker terá um arquivo docker-compose.yml
+```bash
+A partir desse diretório, rodar um comando no terminal
+docker-compose up -d
+```
+### Testes
+```bash
+Para a realização dos testes via API, seguer o vídeo explicativo e collection do Postman em anexo na raíz do Github.
+```
+--- 
+
 ## 📌 Para mais informações sobre os serviços, acessar o Readme.md de cada projeto:
 ms_gerenciador_consultas = https://github.com/igor-fga/hackaton-fase-5/blob/main/ms_gerenciador_consultas/README.md  
 ms_gerenciador_medicamentos = https://github.com/igor-fga/hackaton-fase-5/blob/main/ms_gerenciador_medicamentos/README.md
