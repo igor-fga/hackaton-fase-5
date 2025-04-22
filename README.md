@@ -49,7 +49,7 @@ src/
 │       └── [data.sql]                    # Script de inicialização do banco de dados
 └── test/
     └── java/
-        └── com.prontuario.consultas/
+        └── com.prontuario.servicos/
             └── application/
                 └── usecase/              # Testes dos casos de uso
 ```
