@@ -131,6 +131,9 @@ Docker e docker-compose instalados.
 ```
 ```bash
 Utilizar os arquivos abaixo: 
+https://github.com/igor-fga/hackaton-fase-5/blob/main/docker-compose.yml
+https://github.com/igor-fga/hackaton-fase-5/hospital-realm.json at main · igor-fga/hackaton-fase-5
+https://github.com/igor-fga/hackaton-fase-5/init.sql at main · igor-fga/hackaton-fase-5
 
 ```
 ### Dentro do diretório hackaton-fase-5-docker terá um arquivo docker-compose.yml
@@ -148,3 +151,6 @@ Para a realização dos testes via API, seguer o vídeo explicativo e collection
 ms_gerenciador_consultas = https://github.com/igor-fga/hackaton-fase-5/blob/main/ms_gerenciador_consultas/README.md  
 ms_gerenciador_medicamentos = https://github.com/igor-fga/hackaton-fase-5/blob/main/ms_gerenciador_medicamentos/README.md
 ms_gerenciador_pacientes = https://github.com/igor-fga/hackaton-fase-5/blob/main/ms_gerenciador_pacientes/README.md
+
+## Vídeo MVP:
+
