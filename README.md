@@ -145,6 +145,7 @@ docker-compose up -d
 ```bash
 Para a realização dos testes via API, seguer o vídeo explicativo e collection do Postman em anexo na raíz do Github.
 ```
+
 --- 
 
 ## 📌 Para mais informações sobre os serviços, acessar o Readme.md de cada projeto:
@@ -152,5 +153,7 @@ ms_gerenciador_consultas = https://github.com/igor-fga/hackaton-fase-5/blob/main
 ms_gerenciador_medicamentos = https://github.com/igor-fga/hackaton-fase-5/blob/main/ms_gerenciador_medicamentos/README.md
 ms_gerenciador_pacientes = https://github.com/igor-fga/hackaton-fase-5/blob/main/ms_gerenciador_pacientes/README.md
 
-## Vídeo MVP:
+--- 
+
+## 🎬 Vídeo MVP:
 https://github.com/igor-fga/hackaton-fase-5/blob/main/VIDEO-2025-04-21-21-01-09.mp4
