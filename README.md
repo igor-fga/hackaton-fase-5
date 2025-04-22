@@ -141,9 +141,9 @@ https://github.com/igor-fga/hackaton-fase-5/init.sql at main · igor-fga/hackato
 A partir desse diretório, rodar um comando no terminal
 docker-compose up -d
 ```
-### Testes
+### Testes com o Postman
 ```bash
-Para a realização dos testes via API, seguer o vídeo explicativo e collection do Postman em anexo na raíz do Github.
+Para a realização dos testes via API, utilizar o Postman.
 ```
 
 --- 
