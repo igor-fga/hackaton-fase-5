@@ -144,6 +144,8 @@ docker-compose up -d
 ### Testes com o Postman
 ```bash
 Para a realização dos testes via API, utilizar o Postman.
+hackaton-fase-5/Hackaton-fase-5.postman_security_collection,json.txt at main · igor-fga/hackaton-fase-5
+hackaton-fase-5/Hackaton-fase-5.postman_collection.json at main · igor-fga/hackaton-fase-5
 ```
 
 --- 
