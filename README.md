@@ -7,16 +7,46 @@ Projeto para Hackaton FIAP
 - Banco de dados MySql
 - Arquivo application.properties ou .yaml preenchido corretamente com senha do Banco de Dados
 
+## Estrutura do Projeto
+
+```plaintext
+src/
+├── main/
+│   ├── java/
+│   │   └── com.prontuario.consultas/
+│   │       ├── adapters/
+│   │       │   └── controllers/          # Controladores REST
+│   │       │       ├── dto/              # Objetos de resposta para erros (ErroResponse)
+│   │       │       └── exception/        # Manipuladores de exceções (ApiExceptionHandler)
+│   │       ├── application/
+│   │       │   ├── dto/                  # Objetos de transferência de dados (DTOs)
+│   │       │   ├── mapper/               # Mapeadores de entidades para DTOs
+│   │       │   └── usecase/              # Casos de uso (lógica de negócios)
+│   │       ├── domain/
+│   │       │   ├── entity/               # Entidades do domínio
+│   │       │   └── repository/           # Interfaces de repositórios
+│   │       └── infra/
+│   │           └── config/               # Configurações do projeto
+│   └── resources/
+│       ├── [application.properties]      # Configurações do Spring Boot
+│       └── [data.sql]                    # Script de inicialização do banco de dados
+└── test/
+    └── java/
+        └── com.prontuario.consultas/
+            └── application/
+                └── usecase/              # Testes dos casos de uso
+```
+
 
 ## 🧪 Como Executar
 
-# Clone o projeto
+### Clone o projeto
 ```bash
 git clone https://github.com/igor-fga/hackaton-fase-5
 cd ms-{nome do microserviço}
 ```
 
-# Execute com Maven
+###Execute com Maven
 ```bash
 ./mvnw spring-boot:run
 ```
