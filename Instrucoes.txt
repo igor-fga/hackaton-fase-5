@@ -1,0 +1,26 @@
+URL das imagens dos serviços no Docker HUB
+
+pacientes-ms - https://hub.docker.com/repository/docker/michaeltorto/pacientes-ms/general
+consultas-ms - https://hub.docker.com/repository/docker/michaeltorto/medicamentos-ms/general
+medicamentos-ms - https://hub.docker.com/repository/docker/michaeltorto/consultas-ms/general
+
+
+
+Subindo a aplicação
+
+
+Requisitos necessários
+
+Docker e docker-compose instalados.
+
+
+Descompactar o arquivo hackaton-fase-5-docker.zip
+
+Dentro do diretório hackaton-fase-5-docker terá um arquivo docker-compose.yml
+A partir desse diretório, rodar um comando no terminal
+docker-compose up -d
+
+
+Testes
+
+Para a realização dos testes via API, segue vídeo explicativo e collection do Postman em anexo.

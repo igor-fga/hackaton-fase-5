@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+    networks:
+      - backend
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.1
+    command: start-dev --import-realm --hostname=keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import
+    ports:
+      - "8080:8080"
+    networks:
+      - backend
+
+  pacientes:
+    image: michaeltorto/pacientes-ms:latest
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mysql
+      - keycloak
+    networks:
+      - backend
+
+  medicamentos:
+    image: michaeltorto/medicamentos-ms:latest
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mysql
+      - keycloak
+    networks:
+      - backend
+
+  consultas:
+    image: michaeltorto/consultas-ms:latest
+    ports:
+      - "8083:8083"
+    depends_on:
+      - mysql
+      - keycloak
+    networks:
+      - backend
+
+networks:
+  backend:
