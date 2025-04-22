@@ -153,4 +153,4 @@ ms_gerenciador_medicamentos = https://github.com/igor-fga/hackaton-fase-5/blob/m
 ms_gerenciador_pacientes = https://github.com/igor-fga/hackaton-fase-5/blob/main/ms_gerenciador_pacientes/README.md
 
 ## Vídeo MVP:
-
+https://github.com/igor-fga/hackaton-fase-5/blob/main/VIDEO-2025-04-21-21-01-09.mp4
