@@ -91,7 +91,6 @@ spring.datasource.password=SUA_SENHA
 ### Clone o projeto
 ```bash
 git clone https://github.com/igor-fga/hackaton-fase-5
-cd ms-{nome do microserviço}
 ```
 
 ### Navegue até o diretorio do projeto:
