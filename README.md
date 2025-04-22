@@ -1,14 +1,13 @@
 # hackaton-fase-5
 Projeto para Hackaton FIAP
 
-## Pré-requisitos
+## 📌 Pré-requisitos
 - Java 17 ou superior
 - Maven
 - Banco de dados MySql
 - Arquivo application.properties ou .yaml preenchido corretamente com senha do Banco de Dados
 
-## Estrutura do Projeto
-
+## 🛠️ Estrutura do Projeto
 ```plaintext
 src/
 ├── main/
@@ -40,7 +39,6 @@ src/
 ---
 
 ## 🧩 Entidades de Domínio
-
 **Pacientes**:
 - id, nome, cpf, dataNascimento, contato, endereco, numeroProntuario
 
@@ -54,12 +52,11 @@ src/
 ---
 
 ## 🔒 Segurança
-
 - Autenticação via Keycloak com JWT
 - RBAC baseado em perfis de usuário (médico, enfermeiro, admin)
   
 
-## Configurações do Projeto
+## 📋 Configurações do Projeto
 1. Pré-requisitos:
    - Java 17
    - MySQL
