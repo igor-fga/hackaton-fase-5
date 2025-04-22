@@ -2,7 +2,16 @@
 Projeto para Hackaton FIAP
 
 ## 🛠️ Tecnologias utilizadas:
-
+- **Java 17**
+- **Spring Boot 3.4.4**
+  - Spring Web
+  - Spring Data JPA
+  - Spring Validation
+- **Banco de Dados MySQL**
+- **Lombok**
+- **Mockito** (para testes)
+- **AssertJ** (para assertions em testes)
+- **Maven** (para gerenciamento de dependências)
 
 ## 📌 Pré-requisitos
 - Java 17 ou superior
